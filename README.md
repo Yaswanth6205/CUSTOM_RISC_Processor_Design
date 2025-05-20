@@ -3,7 +3,7 @@
 here we have 8 blocks 
 we will understnad each block functionality and code the block according to it 
 
-<p> 🔷1. Input Buffer \n
+<p> 🔷1. Input Buffer /n
 Function: Temporarily holds external input data (din) before it's stored or processed.\n
 Your Code Reference:
 input [15:0] din;
