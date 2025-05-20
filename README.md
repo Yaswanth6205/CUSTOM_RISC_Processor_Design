@@ -26,7 +26,6 @@ This project demonstrates a custom-designed 16-bit RISC-style processor written 
 | `tb_top.v`      | Testbench with monitoring outputs    |
 | `finalmem.mem`  | Instruction set for simulating       |
 | `waveform_1.png`| Simulation waveform (data reg)       |
-| `waveform_2.png`| FSM and PC tracking                  |
 
 ## 🖥️ Simulation Example
 Here's an example of computing `6 * 5` using repeated addition:
