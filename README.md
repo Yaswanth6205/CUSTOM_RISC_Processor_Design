@@ -31,7 +31,7 @@ This project demonstrates a custom-designed 16-bit RISC-style processor written 
 ## 🖥️ Simulation Example
 Here's an example of computing `6 * 5` using repeated addition:
 
-<img src="E:\waveformout.png" width="600">
+<img src="waveformout.png" width="600">
 
 ## 📈 Results
 we have verified using a test case by doing a program 
