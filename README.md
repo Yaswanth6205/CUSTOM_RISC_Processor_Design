@@ -1,1 +1,22 @@
 # CUSTOM_RISC_Processor_Design
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
