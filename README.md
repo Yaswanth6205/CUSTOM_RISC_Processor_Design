@@ -4,77 +4,77 @@ here we have 8 blocks
 we will understnad each block functionality and code the block according to it 
 
 <p> 🔷1. Input Buffer <br>
-Function: Temporarily holds external input data (din) before it's stored or processed.\n
-Your Code Reference:
-input [15:0] din;
-din is the 16-bit input buffer.
+Function: Temporarily holds external input data (din) before it's stored or processed.<br>
+Your Code Reference:<br>
+input [15:0] din;<br>
+din is the 16-bit input buffer.<br>
 
-Used in storedin instruction to write into data memory: data_mem[immsrc] = din;
+Used in storedin instruction to write into data memory: data_mem[immsrc] = din;<br>
 </p>
 <p>
-🔷 2. Output Buffer
-Function: Sends processed data to an external destination (dout).
+🔷 2. Output Buffer<br>
+Function: Sends processed data to an external destination (dout).<br>
 
-Your Code Reference:
-output reg [15:0] dout;
-Controlled via senddout instruction:dout = data_mem[`immsrc];
+Your Code Reference:<br>
+output reg [15:0] dout;<br>
+Controlled via senddout instruction:dout = data_mem[`immsrc];<br>
 </p>
 <p>
-🔷 3. General-Purpose Registers (GPR)
-Function: Stores operands and intermediate values.
-Your Code Reference:
-reg [15:0] gpr[31:0]; // 32 registers of 16-bit
-Used throughout instructions like movv, radd, rsub, etc.
+🔷 3. General-Purpose Registers (GPR)<br>
+Function: Stores operands and intermediate values.<br>
+Your Code Reference:<br>
+reg [15:0] gpr[31:0]; // 32 registers of 16-bit<br>
+Used throughout instructions like movv, radd, rsub, etc.<br>
 </p>
 <p>
-🔷 4. Arithmetic Unit (AU)
-Function: Performs arithmetic operations like add, subtract, multiply.
-Your Code Reference:
-`radd, `rsub, `rmul
-Add/Sub:
-gpr[rdst] = gpr[rsrc1] + gpr[rsrc2]; // for add
-Multiply:
-mul_res = gpr[rsrc1] * gpr[rsrc2];
-gpr[rdst] = mul_res[15:0];
-sgpr = mul_res[31:16];
-
-</p>
-<p>
-🔷 5. Logic Unit
-Function: Handles logical bitwise operations: AND, OR, XOR, NOT, etc.
-Your Code Reference:
-`ror, `rand, `rxor, `rxnor, `rnand, `rnor, `rnot
-Example for XOR:
-gpr[rdst] = gpr[rsrc1] ^ gpr[rsrc2];
-</p>
-<p>
-🔷 6. Data Memory
-Function: Temporarily stores data accessed during execution.
-Your Code Reference:
-reg [15:0] data_mem[15:0]; // 16 memory locations
-Accessed using instructions like storereg, sendreg.
-</p>
-<p>
-🔷 7. Instruction Register (IR)
-Function: Holds the currently executing instruction.
-Your Code Reference:
-reg [31:0] ir;
-Updated in fetch state:
-ir = inst_mem[pc];
+🔷 4. Arithmetic Unit (AU)<br>
+Function: Performs arithmetic operations like add, subtract, multiply.<br>
+Your Code Reference:<br>
+`radd, `rsub, `rmul<br>
+Add/Sub:<br>
+gpr[rdst] = gpr[rsrc1] + gpr[rsrc2]; // for add<br>
+Multiply:<br>
+mul_res = gpr[rsrc1] * gpr[rsrc2];<br>
+gpr[rdst] = mul_res[15:0];<br>
+sgpr = mul_res[31:16];<br>
 
 </p>
-
 <p>
-🔷 8. Program Memory
-Function: Stores the list of instructions (inst_mem) loaded from a file.
-Your Code Reference:
-reg [31:0] inst_mem[15:0]; // 16 instructions
-$readmemb("finalmem.mem", inst_mem);
+🔷 5. Logic Unit<br>
+Function: Handles logical bitwise operations: AND, OR, XOR, NOT, etc.<br>
+Your Code Reference:<br>
+`ror, `rand, `rxor, `rxnor, `rnand, `rnor, `rnot<br>
+Example for XOR:<br>
+gpr[rdst] = gpr[rsrc1] ^ gpr[rsrc2];<br>
 </p>
 <p>
-🔷 9. Control Unit (CU)
-Function: Manages FSM-based control flow for instruction execution (idle, fetch, decode, delayinst, nextinst, halt).
-Your Code Reference:
-reg [2:0] state, nextstate;
-parameter idle=0, fetch=1, decode=2, nextinst=3, halt=4, delayinst=5;
+🔷 6. Data Memory<br>
+Function: Temporarily stores data accessed during execution.<br>
+Your Code Reference:<br>
+reg [15:0] data_mem[15:0]; // 16 memory locations<br>
+Accessed using instructions like storereg, sendreg.<br>
+</p>
+<p>
+🔷 7. Instruction Register (IR)<br>
+Function: Holds the currently executing instruction.<br>
+Your Code Reference:<br>
+reg [31:0] ir;<br>
+Updated in fetch state:<br>
+ir = inst_mem[pc];<br>
+
+</p>
+
+<p>
+🔷 8. Program Memory<br>
+Function: Stores the list of instructions (inst_mem) loaded from a file.<br>
+Your Code Reference:<br>
+reg [31:0] inst_mem[15:0]; // 16 instructions<br>
+$readmemb("finalmem.mem", inst_mem);<br>
+</p>
+<p>
+🔷 9. Control Unit (CU)<br>
+Function: Manages FSM-based control flow for instruction execution (idle, fetch, decode, delayinst, nextinst, halt).<br>
+Your Code Reference:<br>
+reg [2:0] state, nextstate;<br>
+parameter idle=0, fetch=1, decode=2, nextinst=3, halt=4, delayinst=5;<br>
 </p>
